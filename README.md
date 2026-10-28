@@ -156,7 +156,6 @@ $$P(\text{号码})=\frac{e^{w}}{\sum_{\text{全部候选}}e^{w}},\qquad w=\log P
 ```
 idcheck/
 ├─ idcheck.py                 主程序（只用标准库）
-├─ dist/idcheck.exe           单文件可执行程序
 ├─ data/
 │   ├─ idcheck_tables.txt     省级 + 县级区划表（含启用/废止年）
 │   ├─ country_codes.txt      ISO 3166-1 数字代码（273 条，现行分配）
