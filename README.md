@@ -2,8 +2,6 @@
 
 针对**他人手抄/OCR 转录**的身份证号码：不仅判断对错，还要指出**哪一位错、错成什么**，并逐位给出可能的取值。
 
-交付物：`dist/idcheck.exe`（单文件，Windows x64，双击或命令行运行，无需安装 Python）。
-
 ---
 
 ## 1. 能做什么
@@ -187,7 +185,6 @@ $$P(\text{号码})=\frac{e^{w}}{\sum_{\text{全部候选}}e^{w}},\qquad w=\log P
 ```
 idcheck/
 ├─ idcheck.py                 主程序（只用标准库）
-├─ dist/idcheck.exe           单文件可执行程序
 ├─ data/
 │   ├─ idcheck_tables.txt     省级 + 县级区划表（含启用/废止年）
 │   ├─ country_codes.txt      ISO 3166-1 数字代码（273 条，现行分配）
