@@ -1,0 +1,607 @@
+当前代码
+官方分配代码
+
+以下为目前官方分配的ISO 3166-1数字代码完整列表，其中英文名称为ISO 3166维护机构正式分配使用的英文短格式国名：
+{| class="wikitable sortable"
+|-
+! 代码
+! 国家/地区
+! 英文名称
+|-
+| <tt>004</tt> || [[阿富汗]] || Afghanistan
+|-
+| <tt>008</tt> || [[阿尔巴尼亚]] || Albania
+|-
+| <tt>010</tt> || [[南极洲]] || Antarctica
+|-
+| <tt>012</tt> || [[阿尔及利亚]] || Algeria
+|-
+| <tt>016</tt> || [[美屬薩摩亞]] || American Samoa
+|-
+| <tt>020</tt> || [[安道尔]] || Andorra
+|-
+| <tt>024</tt> || [[安哥拉]] || Angola
+|-
+| <tt>028</tt> || [[安提瓜和巴布达]] || Antigua and Barbuda
+|-
+| <tt>031</tt> || [[阿塞拜疆]] || Azerbaijan
+|-
+| <tt>032</tt> || [[阿根廷]] || Argentina
+|-
+| <tt>036</tt> || [[澳大利亚]] || Australia
+|-
+| <tt>040</tt> || [[奥地利]] || Austria
+|-
+| <tt>044</tt> || [[巴哈马]] || Bahamas (the)
+|-
+| <tt>048</tt> || [[巴林]] || Bahrain
+|-
+| <tt>050</tt> || [[孟加拉国]] || Bangladesh
+|-
+| <tt>051</tt> || [[亞美尼亞]] || Armenia
+|-
+| <tt>052</tt> || [[巴巴多斯]] || Barbados
+|-
+| <tt>056</tt> || [[比利时]] || Belgium
+|-
+| <tt>060</tt> || [[百慕大]] || Bermuda
+|-
+| <tt>064</tt> || [[不丹]] || Bhutan
+|-
+| <tt>068</tt> || [[玻利維亞|多民族玻利维亚国]] || Bolivia (Plurinational State of)
+|-
+| <tt>070</tt> || [[波斯尼亚和黑塞哥维那]] || Bosnia and Herzegovina
+|-
+| <tt>072</tt> || [[波札那]] || Botswana
+|-
+| <tt>074</tt> || [[布韦岛]] || Bouvet Island
+|-
+| <tt>076</tt> || [[巴西]] || Brazil
+|-
+| <tt>084</tt> || [[伯利兹]] || Belize
+|-
+| <tt>086</tt> || [[英屬印度洋領地]] || British Indian Ocean Territory (the)
+|-
+| <tt>090</tt> || [[所罗门群岛]] || Solomon Islands
+|-
+| <tt>092</tt> || [[英屬維爾京群島]] || Virgin Islands (British)
+|-
+| <tt>096</tt> || [[汶莱|汶莱达鲁萨兰国]] || Brunei Darussalam
+|-
+| <tt>100</tt> || [[保加利亚]] || Bulgaria
+|-
+| <tt>104</tt> || [[缅甸]] || Myanmar
+|-
+| <tt>108</tt> || [[蒲隆地]] || Burundi
+|-
+| <tt>112</tt> || [[白俄罗斯]]{{NoteTag|苏联时期曾为[[白俄罗斯苏维埃社会主义共和国]]（Byelorussian SSR）}} || Belarus
+|-
+| <tt>116</tt> || [[柬埔寨]] || Cambodia
+|-
+| <tt>120</tt> || [[喀麦隆]] || Cameroon
+|-
+| <tt>124</tt> || [[加拿大]] || Canada
+|-
+| <tt>132</tt> || [[佛得角]] || Cabo Verde
+|-
+| <tt>136</tt> || [[開曼群島]] || Cayman Islands (the)
+|-
+| <tt>140</tt> || [[中非共和國]] || Central African Republic (the)
+|-
+| <tt>144</tt> || [[斯里蘭卡]] || Sri Lanka
+|-
+| <tt>148</tt> || [[乍得]] || Chad
+|-
+| <tt>152</tt> || [[智利]] || Chile
+|-
+| <tt>156</tt> || [[中华人民共和国|中国]] || China
+|-
+| <tt>158</tt> || [[中国台湾|中国台湾省]]{{NoteTag|鉴于ISO是联合国大会观察员之一，有义务需要与联合国一道支持[[一个中国]]政策，详见[[台湾问题]]}} || Taiwan (Province of China)
+|-
+| <tt>162</tt> || [[圣诞岛]]|| Christmas Island
+|-
+| <tt>166</tt> || [[科科斯（基林）群島]]|| Cocos (Keeling) Islands (the)
+|-
+| <tt>170</tt> || [[哥伦比亚]]|| Colombia
+|-
+| <tt>174</tt> || [[葛摩]]|| Comoros (the)
+|-
+| <tt>175</tt> || [[马约特]]|| Mayotte
+|-
+| <tt>178</tt> || [[刚果共和国|刚果]]|| Congo (the)
+|-
+| <tt>180</tt> || [[刚果民主共和国]]|| Congo (the Democratic Republic of the)
+|-
+| <tt>184</tt> || [[库克群岛]]|| Cook Islands (the)
+|-
+| <tt>188</tt> || [[哥斯达黎加]]|| Costa Rica
+|-
+| <tt>191</tt> || [[克罗地亚]]|| Croatia
+|-
+| <tt>192</tt> || [[古巴]]|| Cuba
+|-
+| <tt>196</tt> || [[賽普勒斯]]|| Cyprus
+|-
+| <tt>203</tt> || [[捷克]]|| Czechia
+|-
+| <tt>204</tt> || [[贝宁]]|| Benin
+|-
+| <tt>208</tt> || [[丹麦]]|| Denmark
+|-
+| <tt>212</tt> || [[多米尼克]]|| Dominica
+|-
+| <tt>214</tt> || [[多明尼加|多明尼加共和國]]|| Dominican Republic (the)
+|-
+| <tt>218</tt> || [[厄瓜多尔]]|| Ecuador
+|-
+| <tt>222</tt> || [[萨尔瓦多]]|| El Salvador
+|-
+| <tt>226</tt> || [[赤道几内亚]]|| Equatorial Guinea
+|-
+| <tt>231</tt> || [[埃塞俄比亚]]|| Ethiopia
+|-
+| <tt>232</tt> || [[厄立特里亚]]|| Eritrea
+|-
+| <tt>233</tt> || [[爱沙尼亚]]|| Estonia
+|-
+| <tt>234</tt> || [[法罗群岛]]|| Faroe Islands (the)
+|-
+| <tt>238</tt> || [[福克兰群岛|福克兰群岛（马尔维纳斯）]]|| Falkland Islands (the) [Malvinas]
+|-
+| <tt>239</tt> || [[南乔治亚和南桑威奇群岛]]|| South Georgia and the South Sandwich Islands
+|-
+| <tt>242</tt> || [[斐济]]|| Fiji
+|-
+| <tt>246</tt> || [[芬兰]]|| Finland
+|-
+| <tt>248</tt> || [[奥兰|奥兰群岛]]|| Åland Islands
+|-
+| <tt>250</tt> || [[法国]]|| France
+|-
+| <tt>254</tt> || [[法屬圭亞那]]|| French Guiana
+|-
+| <tt>258</tt> || [[法屬玻里尼西亞]]|| French Polynesia
+|-
+| <tt>260</tt> || [[法属南部和南极领地|法属南部领地]]{{NoteTag|鉴于[[南极条约]]规定冻结任何国家对{{Link-Wikidata|Q21590062|南极条约地区}}（即[[南纬60度线]]以南至[[南极点]]的陆地和海域）的主权要求，ISO只承认不在南极条约覆盖范围的TAAF地区治权，并从地区官方名中移除“和南极”字样}}|| French Southern Territories (the)
+|-
+| <tt>262</tt> || [[吉布提]]|| Djibouti
+|-
+| <tt>266</tt> || [[加蓬]]|| Gabon
+|-
+| <tt>268</tt> || [[格鲁吉亚]]|| Georgia
+|-
+| <tt>270</tt> || [[冈比亚]]|| Gambia (the)
+|-
+| <tt>275</tt> || [[巴勒斯坦國]]|| Palestine, State of
+|-
+| <tt>276</tt> || [[德国]]|| Germany
+|-
+| <tt>288</tt> || [[加纳]]|| Ghana
+|-
+| <tt>292</tt> || [[直布罗陀]]|| Gibraltar
+|-
+| <tt>296</tt> || [[基里巴斯]]|| Kiribati
+|-
+| <tt>300</tt> || [[希腊]]|| Greece
+|-
+| <tt>304</tt> || [[格陵兰]]|| Greenland
+|-
+| <tt>308</tt> || [[格林纳达]]|| Grenada
+|-
+| <tt>312</tt> || [[瓜德罗普]]|| Guadeloupe
+|-
+| <tt>316</tt> || [[關島]]|| Guam
+|-
+| <tt>320</tt> || [[危地马拉]]|| Guatemala
+|-
+| <tt>324</tt> || [[几内亚]]|| Guinea
+|-
+| <tt>328</tt> || [[圭亚那]]|| Guyana
+|-
+| <tt>332</tt> || [[海地]]|| Haiti
+|-
+| <tt>334</tt> || [[赫德島和麥克唐納群島]]|| Heard Island and McDonald Islands
+|-
+| <tt>336</tt> || [[聖座]]|| Holy See (the)
+|-
+| <tt>340</tt> || [[洪都拉斯]]|| Honduras
+|-
+| <tt>344</tt> || [[香港]]|| Hong Kong
+|-
+| <tt>348</tt> || [[匈牙利]]|| Hungary
+|-
+| <tt>352</tt> || [[冰岛]]|| Iceland
+|-
+| <tt>356</tt> || [[印度]]|| India
+|-
+| <tt>360</tt> || [[印度尼西亚]]|| Indonesia
+|-
+| <tt>364</tt> || [[伊朗]]|| Iran (Islamic Republic of)
+|-
+| <tt>368</tt> || [[伊拉克]]|| Iraq
+|-
+| <tt>372</tt> || [[爱尔兰]]|| Ireland
+|-
+| <tt>376</tt> || [[以色列]]|| Israel
+|-
+| <tt>380</tt> || [[意大利]]|| Italy
+|-
+| <tt>384</tt> || [[科特迪瓦]]|| Côte d'Ivoire
+|-
+| <tt>388</tt> || [[牙买加]]|| Jamaica
+|-
+| <tt>392</tt> || [[日本]]|| Japan
+|-
+| <tt>398</tt> || [[哈萨克斯坦]]|| Kazakhstan
+|-
+| <tt>400</tt> || [[约旦]]|| Jordan
+|-
+| <tt>404</tt> || [[肯尼亚]]|| Kenya
+|-
+| <tt>408</tt> || [[朝鲜民主主义人民共和国]]|| Korea (the Democratic People's Republic of)
+|-
+| <tt>410</tt> || [[大韩民国]]|| Korea (the Republic of)
+|-
+| <tt>414</tt> || [[科威特]]|| Kuwait
+|-
+| <tt>417</tt> || [[吉尔吉斯斯坦]]|| Kyrgyzstan
+|-
+| <tt>418</tt> || [[老挝|老挝人民民主共和国]]|| Lao People's Democratic Republic (the)
+|-
+| <tt>422</tt> || [[黎巴嫩]]|| Lebanon
+|-
+| <tt>426</tt> || [[莱索托]]|| Lesotho
+|-
+| <tt>428</tt> || [[拉脫維亞]]|| Latvia
+|-
+| <tt>430</tt> || [[利比里亚]]|| Liberia
+|-
+| <tt>434</tt> || [[利比亚]]|| Libya
+|-
+| <tt>438</tt> || [[列支敦斯登]]|| Liechtenstein
+|-
+| <tt>440</tt> || [[立陶宛]]|| Lithuania
+|-
+| <tt>442</tt> || [[卢森堡]]|| Luxembourg
+|-
+| <tt>446</tt> || [[澳門]]|| Macao
+|-
+| <tt>450</tt> || [[马达加斯加]]|| Madagascar
+|-
+| <tt>454</tt> || [[马拉维]]|| Malawi
+|-
+| <tt>458</tt> || [[马来西亚]]|| Malaysia
+|-
+| <tt>462</tt> || [[马尔代夫]]|| Maldives
+|-
+| <tt>466</tt> || [[马里]]|| Mali
+|-
+| <tt>470</tt> || [[马耳他]]|| Malta
+|-
+| <tt>474</tt> || [[馬提尼克]]|| Martinique
+|-
+| <tt>478</tt> || [[毛里塔尼亚]]|| Mauritania
+|-
+| <tt>480</tt> || [[毛里求斯]]|| Mauritius
+|-
+| <tt>484</tt> || [[墨西哥]]|| Mexico
+|-
+| <tt>492</tt> || [[摩纳哥]]|| Monaco
+|-
+| <tt>496</tt> || [[蒙古国]]|| Mongolia
+|-
+| <tt>498</tt> || [[摩尔多瓦|摩尔多瓦共和国]]|| Moldova (the Republic of)
+|-
+| <tt>499</tt> || [[蒙特內哥羅]]|| Montenegro
+|-
+| <tt>500</tt> || [[蒙特塞拉特]]|| Montserrat
+|-
+| <tt>504</tt> || [[摩洛哥]]|| Morocco
+|-
+| <tt>508</tt> || [[莫桑比克]]|| Mozambique
+|-
+| <tt>512</tt> || [[阿曼]]|| Oman
+|-
+| <tt>516</tt> || [[纳米比亚]]|| Namibia
+|-
+| <tt>520</tt> || [[諾魯]]|| Nauru
+|-
+| <tt>524</tt> || [[尼泊尔]]|| Nepal
+|-
+| <tt>528</tt> || [[荷兰王国]]|| Netherlands (Kingdom of the)
+|-
+| <tt>531</tt> || [[库拉索]]|| Curaçao
+|-
+| <tt>533</tt> || [[阿魯巴]]|| Aruba
+|-
+| <tt>534</tt> || [[荷屬聖馬丁]]|| Sint Maarten (Dutch part)
+|-
+| <tt>535</tt> || [[博奈尔]]、[[圣尤斯特歇斯]]和[[薩巴]]|| Bonaire, Sint Eustatius and Saba
+|-
+| <tt>540</tt> || [[新喀里多尼亞]]|| New Caledonia
+|-
+| <tt>548</tt> || [[瓦努阿图]]|| Vanuatu
+|-
+| <tt>554</tt> || [[新西兰]]|| New Zealand
+|-
+| <tt>558</tt> || [[尼加拉瓜]]|| Nicaragua
+|-
+| <tt>562</tt> || [[尼日尔]]|| Niger (the)
+|-
+| <tt>566</tt> || [[奈及利亞]]|| Nigeria
+|-
+| <tt>570</tt> || [[紐埃]]|| Niue
+|-
+| <tt>574</tt> || [[诺福克岛]]|| Norfolk Island
+|-
+| <tt>578</tt> || [[挪威]]|| Norway
+|-
+| <tt>580</tt> || [[北马里亚纳群岛]]|| Northern Mariana Islands (the)
+|-
+| <tt>581</tt> || [[美国本土外小岛屿]]|| United States Minor Outlying Islands (the)
+|-
+| <tt>583</tt> || [[密克罗尼西亚联邦]]|| Micronesia (Federated States of)
+|-
+| <tt>584</tt> || [[馬紹爾群島]]|| Marshall Islands (the)
+|-
+| <tt>585</tt> || [[帛琉]]|| Palau
+|-
+| <tt>586</tt> || [[巴基斯坦]]|| Pakistan
+|-
+| <tt>591</tt> || [[巴拿马]]|| Panama
+|-
+| <tt>598</tt> || [[巴布亚新几内亚]]|| Papua New Guinea
+|-
+| <tt>600</tt> || [[巴拉圭]]|| Paraguay
+|-
+| <tt>604</tt> || [[秘鲁]]|| Peru
+|-
+| <tt>608</tt> || [[菲律宾]]|| Philippines (the)
+|-
+| <tt>612</tt> || [[皮特凯恩群岛|皮特凯恩]]|| Pitcairn
+|-
+| <tt>616</tt> || [[波兰]]|| Poland
+|-
+| <tt>620</tt> || [[葡萄牙]]|| Portugal
+|-
+| <tt>624</tt> || [[幾內亞比索]]|| Guinea-Bissau
+|-
+| <tt>626</tt> || [[东帝汶]]|| Timor-Leste
+|-
+| <tt>630</tt> || [[波多黎各]]|| Puerto Rico
+|-
+| <tt>634</tt> || [[卡塔尔]]|| Qatar
+|-
+| <tt>638</tt> || [[留尼汪]]|| Réunion
+|-
+| <tt>642</tt> || [[羅馬尼亞]]|| Romania
+|-
+| <tt>643</tt> || [[俄罗斯|俄罗斯联邦]]|| Russian Federation (the)
+|-
+| <tt>646</tt> || [[卢旺达]]|| Rwanda
+|-
+| <tt>652</tt> || [[聖巴泰勒米]]|| Saint Barthélemy
+|-
+| <tt>654</tt> || [[圣赫勒拿、阿森松和特里斯坦-达库尼亚]]|| Saint Helena, Ascension and Tristan da Cunha
+|-
+| <tt>659</tt> || [[聖克里斯多福及尼維斯]]|| Saint Kitts and Nevis
+|-
+| <tt>660</tt> || [[安圭拉]]|| Anguilla
+|-
+| <tt>662</tt> || [[圣卢西亚]]|| Saint Lucia
+|-
+| <tt>663</tt> || [[法屬聖馬丁]]|| Saint Martin (French part)
+|-
+| <tt>666</tt> || [[圣皮埃尔和密克隆]]|| Saint Pierre and Miquelon
+|-
+| <tt>670</tt> || [[圣文森特和格林纳丁斯]]|| Saint Vincent and the Grenadines
+|-
+| <tt>674</tt> || [[圣马力诺]]|| San Marino
+|-
+| <tt>678</tt> || [[圣多美和普林西比]]|| Sao Tome and Principe
+|-
+| <tt>682</tt> || [[沙特阿拉伯]]|| Saudi Arabia
+|-
+| <tt>686</tt> || [[塞内加尔]]|| Senegal
+|-
+| <tt>688</tt> || [[塞尔维亚]]|| Serbia
+|-
+| <tt>690</tt> || [[塞舌尔]]|| Seychelles
+|-
+| <tt>694</tt> || [[塞拉利昂]]|| Sierra Leone
+|-
+| <tt>702</tt> || [[新加坡]]|| Singapore
+|-
+| <tt>703</tt> || [[斯洛伐克]]|| Slovakia
+|-
+| <tt>704</tt> || [[越南]]|| Viet Nam
+|-
+| <tt>705</tt> || [[斯洛文尼亚]]|| Slovenia
+|-
+| <tt>706</tt> || [[索马里]]|| Somalia
+|-
+| <tt>710</tt> || [[南非]]|| South Africa
+|-
+| <tt>716</tt> || [[辛巴威]]|| Zimbabwe
+|-
+| <tt>724</tt> || [[西班牙]]|| Spain
+|-
+| <tt>728</tt> || [[南苏丹]]|| South Sudan
+|-
+| <tt>729</tt> || [[苏丹]]|| Sudan (the)
+|-
+| <tt>732</tt> || [[西撒哈拉]]|| Western Sahara
+|-
+| <tt>740</tt> || [[蘇利南]]|| Suriname
+|-
+| <tt>744</tt> || [[斯瓦巴和扬马延]]|| Svalbard and Jan Mayen
+|-
+| <tt>748</tt> || [[史瓦帝尼]]|| Eswatini
+|-
+| <tt>752</tt> || [[瑞典]]|| Sweden
+|-
+| <tt>756</tt> || [[瑞士]]|| Switzerland
+|-
+| <tt>760</tt> || [[叙利亚|叙利亚阿拉伯共和国]]|| Syrian Arab Republic (the)
+|-
+| <tt>762</tt> || [[塔吉克斯坦]]|| Tajikistan
+|-
+| <tt>764</tt> || [[泰国]]|| Thailand
+|-
+| <tt>768</tt> || [[多哥]]|| Togo
+|-
+| <tt>772</tt> || [[托克劳]] || Tokelau
+|-
+| <tt>776</tt> || [[東加]]|| Tonga
+|-
+| <tt>780</tt> || [[千里達及托巴哥]]|| Trinidad and Tobago
+|-
+| <tt>784</tt> || [[阿拉伯联合酋长国]]|| United Arab Emirates (the)
+|-
+| <tt>788</tt> || [[突尼西亞]]|| Tunisia
+|-
+| <tt>792</tt> || [[土耳其]]|| Türkiye
+|-
+| <tt>795</tt> || [[土库曼斯坦]]|| Turkmenistan
+|-
+| <tt>796</tt> || [[特克斯和凯科斯群岛]]|| Turks and Caicos Islands (the)
+|-
+| <tt>798</tt> || [[圖瓦盧]]|| Tuvalu
+|-
+| <tt>800</tt> || [[乌干达]]|| Uganda
+|-
+| <tt>804</tt> || [[乌克兰]]|| Ukraine
+|-
+| <tt>807</tt> || [[北馬其頓]]|| North Macedonia
+|-
+| <tt>818</tt> || [[埃及]]|| Egypt
+|-
+| <tt>826</tt> || [[英国|大不列颠和北爱尔兰联合王国]]|| United Kingdom of Great Britain and Northern Ireland (the)
+|-
+| <tt>831</tt> || [[根西]]|| Guernsey
+|-
+| <tt>832</tt> || [[澤西]]|| Jersey
+|-
+| <tt>833</tt> || [[曼島]]|| Isle of Man
+|-
+| <tt>834</tt> || [[坦桑尼亚|坦桑尼亚联合共和国]]|| Tanzania, the United Republic of
+|-
+| <tt>840</tt> || [[美国|美利坚合众国]]|| United States of America (the)
+|-
+| <tt>850</tt> || [[美屬維爾京群島]]|| Virgin Islands (U.S.)
+|-
+| <tt>854</tt> || [[布吉納法索]]{{NoteTag|曾为[[上伏塔共和國|-{zh-cn:上沃尔特;zh-hk:上沃爾特;zh-tw:上伏塔;}-]]（Upper Volta），国名更名后代码未做更改}}|| Burkina Faso
+|-
+| <tt>858</tt> || [[乌拉圭]]|| Uruguay
+|-
+| <tt>860</tt> || [[乌兹别克斯坦]]|| Uzbekistan
+|-
+| <tt>862</tt> || [[委內瑞拉|委內瑞拉玻利瓦爾共和國]]|| Venezuela (Bolivarian Republic of)
+|-
+| <tt>876</tt> || [[瓦利斯和富圖納]]|| Wallis and Futuna
+|-
+| <tt>882</tt> || [[萨摩亚]]|| Samoa
+|-
+| <tt>887</tt> || [[也门]]|| Yemen
+|-
+| <tt>894</tt> || [[赞比亚]]|| Zambia
+|}
+    苏联时期曾为白俄罗斯苏维埃社会主义共和国（Byelorussian SSR）
+    鉴于ISO是联合国大会观察员之一，有义务需要与联合国一道支持一个中国政策，详见台湾问题
+    鉴于南极条约规定冻结任何国家对南极条约地区（即南纬60度线以南至南极点的陆地和海域）的主权要求，ISO只承认不在南极条约覆盖范围的TAAF地区治权，并从地区官方名中移除“和南极”字样
+    曾为上沃尔特（Upper Volta），国名更名后代码未做更改
+
+用户分配代码
+
+用户分配码是指当使用者采用ISO 3166-1代码系统时，在其内部添加用于进一步表示其它国家、地区或地理区域名称的代码，ISO 3166/MA将不会在标准的更新过程中使用这些代码。代码900至999可以被用户自由分配。已知的例子包括美国邓白氏公司，其用926指代科索沃，977指代部分塞浦路斯领土（有指可能用于北塞浦路斯地区）。
+
+
+== 撤销代码 ==
+当国家合并、分裂或领土变更时，其数字代码将被撤销，并分配新的数字代码。 例如：
+
+* [[东德]]和[[西德]]在1990年统一之前分别使用数字代码<tt>278</tt>和<tt>280</tt>。统一后的[[德国]]分配了新数字代码<tt>276</tt>，但是保留了原西德的字母代码。
+* 在1993年[[厄立特里亚]]独立之前，[[埃塞俄比亚]]使用数字编码<tt>230</tt>。从那之后，埃塞俄比亚一直使用数字代码<tt>231</tt>，同时保留了相同的字母代码。
+* 在2011年[[南苏丹]]独立之前，[[苏丹]]使用了数字编码<tt>736</tt>。从那之后，苏丹一直使用数字代码<tt>729</tt>，同时保留了相同的字母代码。
+
+如果一个国家在没有任何领土变化的情况下改变它的名字，它的数字代码仍然是一样的。例如，当[[缅甸]]在1989年没有领土变化的情况下，将其英文国名由“Burma”变更为“Myanmar”，虽然字母代码发生改变，但是其数字代码<tt>104</tt>保持不变。
+
+下列数字代码已从ISO 3166-1撤销代码：<ref>{{cite web |title=Country codes in ISO 3166 (Table 2: codes withdrawn from use) |url=https://www.davros.org/misc/iso3166.html#disused |date=2003-07-25 |author=Clive Feather |access-date=2025-12-11 |archive-date=2026-07-06 |archive-url=https://web.archive.org/web/20260706223609/https://www.davros.org/misc/iso3166.html#disused |url-status=live }}</ref>
+
+{| class="wikitable sortable"
+|-
+! 代码
+! 国家/地区
+! 英文名称
+! 说明
+|-
+| <tt>128</tt>|| [[坎顿及恩德伯里群岛]]|| Canton and Enderbury Islands ||
+|-
+| <tt>200</tt>|| [[捷克斯洛伐克]]|| Czechoslovakia ||
+|-
+| <tt>216</tt>|| [[毛德皇后地]]|| Dronning Maud Land ||
+|-
+| <tt>230</tt>|| [[埃塞俄比亚]]|| Ethiopia || 直至1993年[[厄立特里亚]]独立建国前
+|-
+| <tt>249</tt>|| [[法國本土]]|| France, Metropolitan ||
+|-
+| <tt>278</tt>|| [[東德|德意志民主共和國]]|| German Democratic Republic ||即[[两德统一]]前的东德
+|-
+| <tt>280</tt>|| [[西德|德意志联邦共和国]]|| Germany, Federal Republic of ||即两德统一前的西德
+|-
+| <tt>396</tt>|| [[约翰斯顿环礁|约翰斯顿岛]]|| Johnston Island ||
+|-
+| <tt>488</tt>|| [[中途島|中途群島]]|| Midway Islands ||
+|-
+| <tt>530</tt>|| [[荷属安的列斯]]|| Netherlands Antilles || 1986年[[阿鲁巴]]独立后，直到2010年[[荷属安的列斯解体]]
+|-
+| <tt>532</tt>|| 荷属安的列斯 || Netherlands Antilles || 1986年阿鲁巴独立前（代码于1993年变更为530<ref name=":0">{{cite web |title=ISO3166CountryCodes |url=https://www.eurocode.org/tables/center/ISO3166.html |access-date=2025-04-22 |archive-date=2025-07-03 |archive-url=https://web.archive.org/web/20250703113805/https://www.eurocode.org/tables/center/ISO3166.html |url-status=live }}</ref>）
+|-
+| <tt>536</tt>|| [[沙特阿拉伯—伊拉克中立区|中立区]]|| Neutral Zone ||
+|-
+| <tt>582</tt>|| [[太平洋群島託管地]]|| Pacific Islands (Trust Territory) ||
+|-
+| <tt>590</tt>|| [[巴拿马]]|| Panama  || 1979年[[巴拿馬運河區]]归还巴拿马政府管理之前（代码于1993年变更为591<ref name=":0" />）
+|-
+| <tt>658</tt>|| [[聖克里斯多福-尼維斯-安圭拉]]|| Saint Kitts-Nevis-Anguilla ||
+|-
+| <tt>714</tt>|| [[南越|越南南方]]|| South Vietnam ||
+|-
+| <tt>720</tt>|| [[也门民主人民共和国|民主也门]]|| Yemen, Democratic ||即[[也门统一]]前的南也门
+|-
+| <tt>736</tt>|| [[苏丹]]|| Sudan || 直至2011年[[南苏丹]]独立建国前
+|-
+| <tt>810</tt>|| [[苏联]]|| USSR ||
+|-
+| <tt>849</tt>|| [[島嶼地區 (美國)|美国其他太平洋岛屿]]|| United States Miscellaneous Pacific Islands ||
+|-
+| <tt>872</tt>|| [[威克島]]|| Wake Island ||
+|-
+| <tt>886</tt>|| [[阿拉伯也门共和国|也门阿拉伯共和国]]|| Yemen Arab Republic ||即也门统一前的北也门
+|-
+| <tt>890</tt>|| [[南斯拉夫社会主义联邦共和国]]|| Yugoslavia, Socialist Federal Republic of ||
+|-
+| <tt>891</tt>|| [[塞尔维亚和黑山]]|| Serbia and Montenegro  || 最初称为[[南斯拉夫联盟共和国]]（Yugoslavia, Federal Republic of），直到[[黑山]]独立
+|}
+
+联合国统计司还指定了以下数字代码，但这些地区从未正式列入ISO 3166-1标准：<ref name="iarc">{{cite web |title=Appendix 1. United Nations Standard Country Codes |url=http://www.iarc.fr/en/publications/pdfs-online/epi/sp95/sp95-app1.pdf |work=Cancer Registration: Principles and Methods, IARC Scientific Publication No. 95 |date=1991 |url-status=dead |archive-url=https://web.archive.org/web/20110720234148/http://www.iarc.fr/en/publications/pdfs-online/epi/sp95/sp95-app1.pdf |archive-date=2011-07-20 |access-date=2009-05-11 |publisher=International Agency for Research on Cancer |pages=208–211}}</ref>
+
+{| class="wikitable sortable"
+|-
+! 代码
+! 领土名称
+! 英文名称
+|-
+| <tt>274</tt> || 巴勒斯坦[[加沙地带]]|| Gaza Strip (Palestine) 
+|-
+| <tt>282</tt> || [[东柏林|德意志民主共和国柏林]]|| German Democratic Republic, Berlin 
+|-
+| <tt>284</tt> || 德国[[西柏林]]|| Germany, West Berlin 
+|-
+| <tt>650</tt> || [[琉球群岛]]|| Ryukyu Islands 
+|-
+| <tt>725</tt> || [[西属主权地|西属北非]]|| Spanish North Africa
+|-
+| <tt>830</tt> || [[海峡群岛]]|| Channel Islands 
+|}
+
+在联合国统计司制定的[[UN M.49]]标准中，为了统计处理的目的，使用附加的数字代码来表示地理区域、以及国家和地区的组合，但这些代码不包括在ISO 3166-1中。 与字母代码不同，ISO 3166-1中没有保留的数字代码。
