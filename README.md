@@ -251,7 +251,32 @@ python -m pip install --target .build\pylib pyinstaller
 
 ---
 
-## 9. 已知边界
+## 9. SmartScreen 拦截（窗口标题「Windows 已保护你的电脑」）
+
+1. 双击 `idcheck.exe` → Windows 弹一次「已保护你的电脑」→ 点 **更多信息 → 仍要运行**；
+2. 程序一启动就把自己身上的「来自互联网」标记删掉（`clear_zone_identifier()`，
+   内核 `DeleteFileW("…:Zone.Identifier")`），并写进 `startup.log`；
+3. 从第二次起，文件已无标记 —— SmartScreen 的触发条件消失，**不再有任何提示**。
+
+### 连第一次都不想看到弹窗（可选）
+
+文件夹版里附了 **`首次使用.cmd`**：它 `Unblock-File` 整个目录，并把随包的
+`idcheck-codesign.cer` 导入当前用户的「受信任的根证书颁发机构」与「受信任的发布者」，
+然后启动程序。这样 exe 的签名链在本机可信，发行者显示为 `idcheck local code signing`
+而不是「未知」，一次都不拦。
+
+> 只动 `CurrentUser` 存储，不需要管理员权限；撤销见本节末尾。
+
+撤销本机信任：
+
+```powershell
+Get-ChildItem Cert:\CurrentUser\My,Cert:\CurrentUser\Root,Cert:\CurrentUser\TrustedPublisher |
+  Where-Object { $_.Subject -like "*idcheck local code signing*" } | Remove-Item
+```
+
+---
+
+## 10. 已知边界
 
 - **候选数量上限**：`--edits 2` 时约 8 万种读数；`--edits 3` 会到百万级，交互上不可取，请配合 `--suspect` 使用。
 - **最小改动未必是唯一解释**：一处漏抄可在 17 个位置补入，各自都只是"一个候选"，程序会并列给出，这正是需要 `--suspect` 的原因。
