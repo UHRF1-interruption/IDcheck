@@ -99,7 +99,7 @@
 
 $$c=\left(12-\left(\sum_{i=1}^{17}a_i W_i \bmod 11\right)\right) \bmod 11,\quad W_i=2^{18-i} \bmod 11$$
 
-权重依次为 `7 9 10 5 8 4 2 1 6 3 7 9 10 5 8 4 2`，c=10 记作 `X`。
+权重依次为 `7 9 10 5 8 4 2 1 6 3 7 9 10 5 8 4 2`，$`c=10`$ 记作 `X`。
 
 这条式子的用处不只是"验对错"：它是一条模 11 的**线性方程**。固定其余位后，任意一位上的正确值都被唯一确定 —— 这就是"反推"的数学基础。给定其余 16 位，第 $k$ 位应改成
 
@@ -124,7 +124,7 @@ $$a_k'=\left(a_k-\omega\cdot W_k^{-1}\right)\bmod 11,\qquad \omega=\sum_{i=1}^{1
 
 $$P(\text{读数})=\prod_{\text{原样}}p\;\cdot\prod_{\text{替换}}\frac{1-p}{10}\;\cdot\prod_{\text{插入}}q_{\text{ins}}\;\cdot\prod_{\text{删除}}q_{\text{del}}\;\cdot\prod_{\text{换位}}q_{\text{swap}}\;\cdot\prod_{\text{合并}}q_{\text{merge}}$$
 
-默认 $p=0.97$，$q_{\text{ins}}=q_{\text{del}}=0.01$，$q_{\text{swap}}=q_{\text{merge}}=0.02$，缺位 $q_{\text{blank}}=0.03$。
+默认 $`p=0.97`$， $`q_{\text{ins}}=q_{\text{del}}=0.01`$， $`q_{\text{swap}}=q_{\text{merge}}=0.02`$，缺位 $`q_{\text{blank}}=0.03`$。
 
 读数与号码不是一一对应：读数的前 17 位确定后，第 18 位由校验公式给出；若读数里的第 18 位与公式不符，就记一次"校验位抄错"的替换。于是
 
@@ -137,7 +137,16 @@ $$P(\text{读数})=\prod_{\text{原样}}p\;\cdot\prod_{\text{替换}}\frac{1-p}{
 
 号码不是随机的：区划码要在库里、出生日期要合法、**区划代码要与出生年相容**。设权重
 
-$$\text{先验}=\begin{cases}4 & \text{区划命中且出生年在代码有效期内}\\ 2 & \text{出生日期合法}\\ 1 & \text{顺序码完整}\end{cases}\qquad\text{任一项不成立}\Rightarrow\times 0.04$$
+$$
+\begin{aligned}
+\text{先验} = \begin{cases}
+  4 & \text{区划命中且出生年在代码有效期内} \\
+  2 & \text{出生日期合法} \\
+  1 & \text{顺序码完整}
+\end{cases}
+&& \text{任一项不成立} \Rightarrow \times 0.04
+\end{aligned}
+$$
 
 区划时效按"出生年是否落在代码的启用—废止区间"判定，边界年（恰为启用年或废止年）乘 0.5：
 
@@ -239,8 +248,6 @@ python -m pip install --target .build\pylib pyinstaller
 ```
 
 打包后无参数启动走图形界面，带子命令则走命令行，两者共用同一份分析代码。
-
-如果双击后仍然没有窗口，把 exe 旁边的 startup.log（或 %LOCALAPPDATA%\idcheck\startup.log）发我：里面记录了每次启动的 pid、是否 frozen、控制台是否被隐藏、以及 GUI 失败的完整 traceback。
 
 ---
 
