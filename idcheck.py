@@ -897,6 +897,8 @@ def build_parser():
     p = argparse.ArgumentParser(
         prog='idcheck', description='身份证号码校验、错位诊断与区划代码反推')
     p.add_argument('--version', action='version', version='idcheck ' + VERSION)
+    p.add_argument('-i', '--interactive', action='store_true',
+                   help='交互模式：反复输入号码，直到输入 q（双击 exe 时默认）')
     sub = p.add_subparsers(dest='cmd')
 
     c = sub.add_parser('check', help='严格校验一个 18 位号码')
@@ -949,6 +951,87 @@ def cmd_demo(admin, countries):
         print(render(analyze(s, admin, countries), admin, countries))
 
 
+BANNER = """
+idcheck %s —— 身份证号码校验 / 错位诊断 / 区划反推
+=====================================================================
+直接输入（或粘贴）号码后回车即可。看不懂的位用空格或 ? 代替。
+命令：
+  check <号码>         只做严格校验（JSON）
+  gender 男|女|未知     输入者提供的性别
+  foreign 是|否|未知    是否外国人永久居留身份证
+  suspect 15,16        只看这些位是否可能错（明显更快）
+  edits 2              允许几处局部改动（默认 2，3 会慢）
+  help   q             帮助 / 退出
+示例：1101021984 406970X
+"""
+
+
+def interactive(admin, countries):
+    """双击 exe（无参数）时进入：反复读号码、出报告，直到输入 q。"""
+    print(BANNER % VERSION)
+    gender = '未知'
+    foreign = '未知'
+    max_edits = 2
+    suspect = []
+    while True:
+        try:
+            line = input('号码> ')
+        except (EOFError, KeyboardInterrupt):
+            print()
+            break
+        # 管道输入可能带 BOM / 零宽字符（PowerShell 重定向会加 BOM）
+        line = line.replace('\ufeff', '').replace('\u200b', '').strip()
+        if not line:
+            continue
+        low = line.lower()
+        if low in ('q', 'quit', 'exit', '退出', '结束'):
+            break
+        if low in ('help', '?', '帮助', 'h'):
+            print(BANNER % VERSION)
+            continue
+        head, _, rest = line.partition(' ')
+        head_l = head.lower()
+        rest = rest.strip()
+        if head_l in ('gender', '性别'):
+            if rest in ('男', '女', '未知'):
+                gender = rest
+            elif rest in ('m', 'f'):
+                gender = '男' if rest == 'm' else '女'
+            print('性别 =', gender)
+            continue
+        if head_l in ('foreign', '外国人'):
+            if rest in ('是', '否', '未知'):
+                foreign = rest
+            print('外国人 =', foreign)
+            continue
+        if head_l in ('suspect', '可疑位'):
+            suspect = parse_positions(rest)
+            print('可疑位 =', suspect or '（不限）')
+            continue
+        if head_l == 'edits':
+            if rest.isdigit():
+                max_edits = max(1, min(3, int(rest)))
+            print('允许改动 =', max_edits, '（3 会很慢）')
+            continue
+        if head_l == 'check':
+            if not rest:
+                print('用法：check 11010219840406970X')
+                continue
+            out = do_check(rest, admin, countries)
+            print(json.dumps(out, ensure_ascii=False, indent=2))
+            continue
+        priors = Priors(gender=gender, foreign=foreign)
+        try:
+            res = analyze(line, admin, countries, priors=priors,
+                          max_edits=max_edits, suspect=suspect)
+        except Exception as exc:                  # 单条出错不退出
+            print('分析出错：%s' % exc)
+            continue
+        print(render(res, admin, countries, top=10))
+        print()
+    print('已退出。')
+
+
 def main(argv):
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -958,8 +1041,18 @@ def main(argv):
         out = do_check(args.number, admin, countries)
         print(json.dumps(out, ensure_ascii=False, indent=2))
         return 0 if out.get('ok') else 1
-    if args.cmd in (None, 'demo'):
+    if args.cmd == 'demo':
         cmd_demo(admin, countries)
+        return 0
+    if args.cmd is None:
+        # 双击 exe 时没有任何参数：一律进入交互模式，否则窗口会一闪而过。
+        # （管道喂数据时同样可用：读到结尾就退出。）
+        interactive(admin, countries)
+        if sys.stdin is not None and sys.stdin.isatty():
+            try:
+                input('按回车键关闭窗口…')
+            except (EOFError, KeyboardInterrupt):
+                pass
         return 0
     if args.cmd == 'analyze':
         priors = Priors(p_foreign=args.p_foreign, gender=args.gender,
