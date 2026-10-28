@@ -1,6 +1,14 @@
 # idcheck —— 身份证号码校验、错位诊断与区划代码反推
 
-针对**他人手抄/OCR 转录**的身份证号码：可以判断对错，且能指出**哪一位错、错成什么**，并逐位给出可能的取值。
+针对**他人手抄/OCR 转录**的身份证号码：不仅判断对错，还要指出**哪一位错、错成什么**，并逐位给出可能的取值。
+
+交付物（Windows x64，无需安装 Python）：
+
+| 形态 | 路径 | 说明 |
+| --- | --- | --- |
+| **文件夹版（推荐）** | `dist/idcheck/idcheck.exe` | 启动即开、不碰 `%TEMP%`，双击就有窗口 |
+| 压缩包 | `dist/idcheck-2026-10-29_0330-win64.zip` | 文件夹版的 zip，拷到别的机器解压即用 |
+| 单文件版 | `dist/idcheck-single.exe` | 只拷一个文件方便，但每次启动要解压到 `%TEMP%`；`%TEMP%` 不可写时会启动即退出 |
 
 ---
 
@@ -8,14 +16,35 @@
 
 | 场景 | 用法 | 输出 |
 | --- | --- | --- |
-| **双击 exe** | 直接双击 `idcheck.exe` | 打开窗口进入**交互模式**，反复输入号码，`q` 退出 |
+| **双击 exe** | 双击 `dist/idcheck/idcheck.exe` | 打开**图形界面**，粘贴号码回车即出结果 |
 | 号码是否合法 | `idcheck check 11010219840406970X` | 校验码、地址码、出生日期、顺序码、性别逐项结论（JSON） |
 | 手抄号码有错位/污损 | `idcheck analyze <号码>` | 候选号码排序 + 每一处错位点 + 逐位候选字符 |
 | 一次处理多行 | `idcheck analyze --stdin` | 每行一个号码，逐行输出 |
+| 纯文本界面 | `idcheck --console`（或 `-i`） | 命令行窗口里的交互式输入 |
 
-### 双击进入的交互模式
+### 双击进入的图形界面
 
-双击 exe 后停在提示符上，粘贴号码回车即可；退出前窗口不会关闭：
+![图形界面](docs/gui.png)
+
+双击 `idcheck.exe` 直接弹出窗口（不再有控制台窗口），上方填号码，下方是候选表格与逐位候选：
+
+- **分析（回车）**：跑完整的错位识别与反推，结果填进表格；
+- **严格校验**：只判合法与否，输出 JSON；
+- 顶部可设性别、是否外国人、可疑位、允许改动数，改完下一条立即生效；
+- 分析在后台线程跑，界面不冻结；`Esc` 退出。
+
+**附带的控制台黑窗口默认隐藏**，只留 GUI。做法是 `user32!ShowWindow(hwnd, SW_HIDE)`
+而不是 `FreeConsole()`：单文件 exe 是"引导进程 + 子进程"两个进程共用同一个控制台，
+子进程 `FreeConsole()` 之后引导进程仍持有它，黑窗口不会消失 —— 这正是最初关不掉的原因。
+隐藏前先查该控制台挂了几个进程，只有 1–2 个（本次启动专用的控制台）才动手；
+从已有终端启动时不会动你的终端窗口。
+
+打包成 exe 后仍完整保留命令行用法（`check` / `analyze` / `demo` / `--stdin`），
+图形界面只是"无参数启动"时的默认行为——这正是双击时的情况。
+
+### 纯文本交互（`--console`）
+
+不想用图形界面时：
 
 ```
 号码> 1101021984 406970X
@@ -25,10 +54,9 @@
 ...
 号码> q
 已退出。
-按回车键关闭窗口…
 ```
 
-交互中可随时改设置，下一条号码立即生效：
+文本交互中可随时改设置，下一条号码立即生效：
 
 | 命令 | 作用 |
 | --- | --- |
@@ -38,8 +66,6 @@
 | `suspect 15,16` | 只看这些位是否可能错（更快更准）；单独 `suspect` 清空 |
 | `edits 2` | 允许几处局部改动 |
 | `help` / `q` | 帮助 / 退出 |
-
-从命令行也能强制进入：`idcheck --interactive`。
 
 `analyze` 的核心产出是三样：
 
@@ -185,6 +211,10 @@ $$P(\text{号码})=\frac{e^{w}}{\sum_{\text{全部候选}}e^{w}},\qquad w=\log P
 ```
 idcheck/
 ├─ idcheck.py                 主程序（只用标准库）
+├─ idcheck_gui.py             图形界面（tkinter，同样是标准库）
+├─ dist/idcheck/              文件夹版（exe + _internal，推荐）
+├─ dist/idcheck-single.exe    单文件版（需可写的 %TEMP%）
+├─ docs/gui.png               界面截图
 ├─ data/
 │   ├─ idcheck_tables.txt     省级 + 县级区划表（含启用/废止年）
 │   ├─ country_codes.txt      ISO 3166-1 数字代码（273 条，现行分配）
@@ -211,12 +241,20 @@ python tools/parse_country_codes.py
 # 2) 自检
 python tests/selftest.py
 
-# 3) 打包 exe（需要 PyInstaller）
-$env:PYTHONPATH = "E:\Work\DSH\idcheck\.build\pylib"
-python -m PyInstaller --noconfirm --onefile --console --name idcheck `
-    --add-data "E:\Work\DSH\idcheck\data;data" `
-    --distpath dist --workpath .build\pyi --specpath .build idcheck.py
+# 3) 打包 exe（脚本会自动带上 --hidden-import idcheck_gui 与 tkinter）
+python tools/build_exe.py
 ```
+
+`tools/build_exe.py` 用的是装在 `.build/pylib` 里的 PyInstaller（不污染系统 Python）；
+若该目录不存在，先执行：
+
+```powershell
+python -m pip install --target .build\pylib pyinstaller
+```
+
+打包后无参数启动走图形界面，带子命令则走命令行，两者共用同一份分析代码。
+
+如果双击后仍然没有窗口，把 exe 旁边的 startup.log（或 %LOCALAPPDATA%\idcheck\startup.log）发我：里面记录了每次启动的 pid、是否 frozen、控制台是否被隐藏、以及 GUI 失败的完整 traceback。
 
 ---
 

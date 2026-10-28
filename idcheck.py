@@ -42,6 +42,9 @@ import sys
 import time
 
 VERSION = '1.0'
+# 构建标记：改代码后由 tools/build_exe.py 自动写入；GUI 标题与 --version 都会显示，
+# 方便确认"我双击的到底是哪个版本"。
+BUILD = '2026-10-29 03:30'
 
 # ---------------------------------------------------------------------------
 # 基本常量
@@ -896,9 +899,12 @@ def do_check(text, admin, countries):
 def build_parser():
     p = argparse.ArgumentParser(
         prog='idcheck', description='身份证号码校验、错位诊断与区划代码反推')
-    p.add_argument('--version', action='version', version='idcheck ' + VERSION)
+    p.add_argument('--version', action='version',
+                   version='idcheck %s（build %s）' % (VERSION, BUILD))
     p.add_argument('-i', '--interactive', action='store_true',
-                   help='交互模式：反复输入号码，直到输入 q（双击 exe 时默认）')
+                   help='文本交互模式：反复输入号码，直到输入 q')
+    p.add_argument('--console', action='store_true',
+                   help='不打开图形界面，用文本交互模式')
     sub = p.add_subparsers(dest='cmd')
 
     c = sub.add_parser('check', help='严格校验一个 18 位号码')
@@ -1045,8 +1051,33 @@ def main(argv):
         cmd_demo(admin, countries)
         return 0
     if args.cmd is None:
-        # 双击 exe 时没有任何参数：一律进入交互模式，否则窗口会一闪而过。
-        # （管道喂数据时同样可用：读到结尾就退出。）
+        # 双击 exe（无参数）：优先开图形界面；tkinter 不可用或加了 --console 时
+        # 退回文本交互模式，保证窗口不会一闪而过。
+        if not args.console and not args.interactive:
+            # 打包成 exe 后入口脚本叫 __main__，GUI 模块里的 import idcheck
+            # 找不到同名模块；先把它注册进 sys.modules 再导入。
+            sys.modules.setdefault('idcheck', sys.modules[__name__])
+            gui_err = None
+            try:
+                import idcheck_gui
+            except Exception:
+                import traceback as _tb
+                idcheck_gui = None
+                gui_err = _tb.format_exc()
+            if idcheck_gui is not None:
+                try:
+                    return idcheck_gui.run(admin, countries)
+                except Exception:
+                    import traceback as _tb
+                    gui_err = _tb.format_exc()
+            if gui_err:
+                startup_log('GUI 启动失败：\n' + gui_err)
+                # 控制台已被藏起来，纯文本交互会"看不见"；先把它放出来并弹窗
+                show_own_console()
+                fatal_box('idcheck 图形界面启动失败',
+                          '图形界面没能启动，已退回文本模式。\n\n'
+                          + gui_err[-1200:])
+                sys.stderr.write('GUI 启动失败，改用文本模式：\n' + gui_err)
         interactive(admin, countries)
         if sys.stdin is not None and sys.stdin.isatty():
             try:
@@ -1081,9 +1112,122 @@ def main(argv):
     return 2
 
 
+def startup_log(msg):
+    """把启动过程写进日志，便于排查"双击没反应"这类问题。
+
+    先试 %LOCALAPPDATA%\\idcheck，再退回可执行文件所在目录；都写不了就算了。
+    """
+    import datetime
+    stamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    line = '%s  %s\n' % (stamp, msg)
+    cands = []
+    la = os.environ.get('LOCALAPPDATA')
+    if la:
+        cands.append(os.path.join(la, 'idcheck'))
+    if getattr(sys, 'frozen', False):
+        cands.append(os.path.dirname(os.path.abspath(sys.executable)))
+    else:
+        cands.append(os.path.dirname(os.path.abspath(__file__)))
+    for d in cands:
+        try:
+            os.makedirs(d, exist_ok=True)
+            path = os.path.join(d, 'startup.log')
+            with open(path, 'a', encoding='utf-8') as f:
+                f.write(line)
+            return path
+        except Exception:
+            continue
+    return ''
+
+
+def console_info():
+    """返回 (hwnd, 附件进程数)；拿不到就 (0, 0)。"""
+    if sys.platform != 'win32':
+        return 0, 0
+    try:
+        import ctypes
+        k = ctypes.windll.kernel32
+        k.GetConsoleWindow.restype = ctypes.c_void_p
+        k.GetConsoleProcessList.argtypes = [ctypes.POINTER(ctypes.c_uint32),
+                                            ctypes.c_uint32]
+        hwnd = int(k.GetConsoleWindow() or 0)
+        arr = (ctypes.c_uint32 * 16)()
+        n = int(k.GetConsoleProcessList(arr, 16))
+        return hwnd, n
+    except Exception:
+        return 0, 0
+
+
+def show_own_console():
+    """把之前藏起来的控制台再显示出来（GUI 起不来时用）。"""
+    if sys.platform != 'win32':
+        return False
+    try:
+        import ctypes
+        u = ctypes.windll.user32
+        u.ShowWindow.argtypes = [ctypes.c_void_p, ctypes.c_int]
+        hwnd, n = console_info()
+        if not hwnd:
+            return False
+        u.ShowWindow(ctypes.c_void_p(hwnd), 5)      # SW_SHOW
+        return True
+    except Exception:
+        return False
+
+
+def fatal_box(title, text):
+    """没有控制台可见时也能让人看到错误。"""
+    try:
+        import ctypes
+        ctypes.windll.user32.MessageBoxW(None, text, title, 0x10)
+        return True
+    except Exception:
+        return False
+
+
+def hide_own_console():
+    """双击启动时隐藏随之创建的控制台黑窗口。
+
+    只在本进程是该控制台的唯一（或唯二，PyInstaller 单文件是父+子两个进程）
+    使用者时动手；从已有终端启动时控制台里还有 cmd/PowerShell 等进程，绝不能
+    把用户的终端窗口藏起来。
+    """
+    if sys.platform != 'win32':
+        return False
+    try:
+        import ctypes
+        k = ctypes.windll.kernel32
+        u = ctypes.windll.user32          # ShowWindow 在 user32，不在 kernel32
+        k.GetConsoleWindow.restype = ctypes.c_void_p
+        k.GetConsoleProcessList.argtypes = [ctypes.POINTER(ctypes.c_uint32),
+                                            ctypes.c_uint32]
+        u.ShowWindow.argtypes = [ctypes.c_void_p, ctypes.c_int]
+        u.IsWindowVisible.argtypes = [ctypes.c_void_p]
+        hwnd = k.GetConsoleWindow()
+        if not hwnd:
+            return False
+        arr = (ctypes.c_uint32 * 16)()
+        n = k.GetConsoleProcessList(arr, 16)
+        if n > 2:
+            return False              # 这个控制台还挂着别人的终端，不能动
+        u.ShowWindow(ctypes.c_void_p(hwnd), 0)                # SW_HIDE
+        ok = not u.IsWindowVisible(ctypes.c_void_p(hwnd))
+        startup_log('hide console hwnd=%s procs=%d -> %s'
+                    % (hwnd, n, 'hidden' if ok else 'FAILED'))
+        return ok
+    except Exception:
+        return False
+
+
 if __name__ == '__main__':
     # 管道/重定向时 Windows 默认按 GBK 解码，中文与 BOM 都会变乱码；号码是 ASCII，
     # 统一按 UTF-8 读不会影响键盘输入。
+    startup_log('start pid=%d frozen=%s build=%s argv=%r'
+                % (os.getpid(), bool(getattr(sys, 'frozen', False)), BUILD,
+                   sys.argv[1:]))
+    if len(sys.argv) == 1:
+        # 无参数 = 图形界面（或文本交互），先把附带的黑窗口藏起来
+        hide_own_console()
     for stream in (sys.stdin, sys.stdout, sys.stderr):
         try:
             stream.reconfigure(encoding='utf-8', errors='replace')
