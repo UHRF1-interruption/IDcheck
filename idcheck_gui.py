@@ -115,11 +115,15 @@ class App:
             side='left', padx=(8, 0))
         ttk.Button(bar, text='清空', width=8, command=self.do_clear).pack(
             side='left', padx=(8, 0))
+        ttk.Button(bar, text='填入示例', width=10,
+                   command=self.do_sample).pack(side='left', padx=(8, 0))
         self.var_status = tk.StringVar(value='就绪')
         ttk.Label(bar, textvariable=self.var_status, foreground='#444').pack(
             side='left', padx=(16, 0))
 
-        self.var_head = tk.StringVar(value='')
+        self.var_head = tk.StringVar(value=(
+            '把号码粘贴到上面的输入框，按回车（或点"分析"）开始。\n'
+            '示例：1101021984 406970X  —— 中间的空格表示"这一位看不清"。'))
         ttk.Label(root, textvariable=self.var_head,
                   font=('Microsoft YaHei UI', 11, 'bold'),
                   padding=(14, 2, 14, 8), wraplength=1090,
@@ -159,6 +163,14 @@ class App:
         root.bind('<Control-Return>', self.do_analyze)
         root.bind('<Escape>', lambda e: root.destroy())
         self.entry.focus_set()
+        try:
+            root.update_idletasks()
+            root.deiconify()
+            root.lift()
+            root.attributes('-topmost', True)
+            root.after(400, lambda: root.attributes('-topmost', False))
+        except Exception:
+            pass
         self.root.after(100, self.poll)
 
     # ---------- 线程 → 界面 ----------
@@ -279,6 +291,11 @@ class App:
         self.txt.configure(state='disabled')
         self.var_head.set('严格校验：%s' % ('合法' if out.get('ok') else '不合法'))
         self.set_status('就绪')
+
+    def do_sample(self):
+        self.var_num.set('1101021984 406970X')
+        self.entry.focus_set()
+        self.do_analyze()
 
     def do_clear(self):
         self.var_num.set('')

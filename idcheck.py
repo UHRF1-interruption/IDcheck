@@ -44,7 +44,7 @@ import time
 VERSION = '1.0'
 # 构建标记：改代码后由 tools/build_exe.py 自动写入；GUI 标题与 --version 都会显示，
 # 方便确认"我双击的到底是哪个版本"。
-BUILD = '2026-10-29 03:30'
+BUILD = '2026-10-29 04:19'
 
 # ---------------------------------------------------------------------------
 # 基本常量
@@ -1112,6 +1112,28 @@ def main(argv):
     return 2
 
 
+def clear_zone_identifier(path=None):
+    """删掉"来自互联网"标记（NTFS 备用数据流 Zone.Identifier）。
+
+    SmartScreen 的拦截条件之一就是这个标记：带标记 + 无签名/无信誉，每次启动都拦。
+    程序一旦被放行运行起来，就把自己的标记删掉，此后同一文件不再被拦 ——
+    于是"换台机器也只弹一次"，而不是每次双击都弹。
+    """
+    if sys.platform != 'win32':
+        return False
+    import ctypes
+    target = path or (sys.executable if getattr(sys, 'frozen', False) else None)
+    if not target:
+        return False
+    try:
+        ok = bool(ctypes.windll.kernel32.DeleteFileW(target + ':Zone.Identifier'))
+        if ok:
+            startup_log('cleared Zone.Identifier on %s' % target)
+        return ok
+    except Exception:
+        return False
+
+
 def startup_log(msg):
     """把启动过程写进日志，便于排查"双击没反应"这类问题。
 
@@ -1225,6 +1247,9 @@ if __name__ == '__main__':
     startup_log('start pid=%d frozen=%s build=%s argv=%r'
                 % (os.getpid(), bool(getattr(sys, 'frozen', False)), BUILD,
                    sys.argv[1:]))
+    # 已经跑起来说明用户已经放行过一次；把自己的"来自互联网"标记清掉，
+    # 这样第二次起就不再触发 SmartScreen。
+    clear_zone_identifier()
     if len(sys.argv) == 1:
         # 无参数 = 图形界面（或文本交互），先把附带的黑窗口藏起来
         hide_own_console()
